@@ -1,47 +1,27 @@
 package com.parqueadero.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
-import javax.persistence.Column;
+
 
 @Entity
-@Table(name = "Vehiculo")
+@Table (name = "Vehiculo")
 public class Vehiculo {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "id_vehiculo")
-	private Long idVehiculo;
-	
-	
-	@NotNull
-	@Column(name="placa_vehiculo", nullable = false)
+	@Column (name = "placa", length =7)
 	private String placa;
 	
-	@NotNull
-	@Column(name ="cilindraje")
+	@Column (name="Cilindraje")
 	private Integer cilindraje;
 	
 	@NotNull
-	@Column (name = "fecha_ingreso")
-	private LocalDateTime fechaIngreso;
-	
-	@NotNull
-	@Column (name= "tipo")
+	@Column (name="tipo")
 	private String tipo;
-
-	public Long getIdVehiculo() {
-		return idVehiculo;
-	}
-
-	public void setIdVehiculo(Long idVehiculo) {
-		this.idVehiculo = idVehiculo;
-	}
 
 	public String getPlaca() {
 		return placa;
@@ -59,14 +39,6 @@ public class Vehiculo {
 		this.cilindraje = cilindraje;
 	}
 
-	public LocalDateTime getFechaIngreso() {
-		return fechaIngreso;
-	}
-
-	public void setFechaIngreso(LocalDateTime fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
-	}
-
 	public String getTipo() {
 		return tipo;
 	}
@@ -75,14 +47,5 @@ public class Vehiculo {
 		this.tipo = tipo;
 	}
 	
-	public Vehiculo (String placa,Integer cilindraje,LocalDateTime fechaIngreso, String tipo) {
-		this.placa = placa;
-		this.cilindraje = cilindraje;
-		this.fechaIngreso= fechaIngreso;
-		this.tipo = tipo;
-		
-		
-	}
-	
-	
+
 }

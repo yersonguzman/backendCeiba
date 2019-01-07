@@ -1,6 +1,7 @@
 package com.parqueadero.models;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+
 @Entity
 @Table (name = "Registro")
 public class Registro {
@@ -22,15 +24,22 @@ public class Registro {
 	@Column (name = "id_registro")
 	private long idRegistro;
 	
-	@NotNull
-	@Column (name = "fk_id_vehiculo")
-	private String idVehiculo;
+		
+	@Column(name = "fk_placa", length = 7)
+	private String placa;
 	
-	@ManyToOne (fetch = FetchType.EAGER)
-	@JoinColumn(name= "id_Vehiculo",insertable= false, updatable=false)
-	private Vehiculo VehiculoRegistro;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_placa", insertable = false, updatable = false)
+	private Vehiculo vehiculoHistorico;
 	
 	@NotNull
+	@Column(name = "fecha_ingreso")
+	private LocalDateTime fechaIngreso;
+	
+	@Column(name = "fecha_salida")
+	private LocalDateTime fechaSalida;
+	
+	
 	@Column (name = "total_pago")
 	private BigDecimal totalPago;
 
@@ -42,20 +51,36 @@ public class Registro {
 		this.idRegistro = idRegistro;
 	}
 
-	public String getIdVehiculo() {
-		return idVehiculo;
+	public String getPlaca() {
+		return placa;
 	}
 
-	public void setIdVehiculo(String idVehiculo) {
-		this.idVehiculo = idVehiculo;
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
 
-	public Vehiculo getVehiculoRegistro() {
-		return VehiculoRegistro;
+	public Vehiculo getVehiculoHistorico() {
+		return vehiculoHistorico;
 	}
 
-	public void setVehiculoRegistro(Vehiculo vehiculoRegistro) {
-		VehiculoRegistro = vehiculoRegistro;
+	public void setVehiculoHistorico(Vehiculo vehiculoHistorico) {
+		this.vehiculoHistorico = vehiculoHistorico;
+	}
+
+	public LocalDateTime getFechaIngreso() {
+		return fechaIngreso;
+	}
+
+	public void setFechaIngreso(LocalDateTime fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+
+	public LocalDateTime getFechaSalida() {
+		return fechaSalida;
+	}
+
+	public void setFechaSalida(LocalDateTime fechaSalida) {
+		this.fechaSalida = fechaSalida;
 	}
 
 	public BigDecimal getTotalPago() {
@@ -65,4 +90,7 @@ public class Registro {
 	public void setTotalPago(BigDecimal totalPago) {
 		this.totalPago = totalPago;
 	}
+
+	
 }
+
