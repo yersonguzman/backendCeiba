@@ -9,7 +9,7 @@ public interface RegistroService {
 	
 	public Registro crearRegistro (Registro registro);
     
-	public Optional <Registro> consultarRegistro (Long idRegistro);
+	public Registro consultarRegistro (Long idRegistro);
 	
 	public Registro modificarRegistro (Registro registro);
 	

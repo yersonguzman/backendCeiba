@@ -21,8 +21,12 @@ public class RegistroServiceImp implements RegistroService{
 	}
 
 	@Override
-	public Optional<Registro> consultarRegistro(Long idRegistro) {
-		return registroRepository.findById(idRegistro);
+	public Registro consultarRegistro(Long idRegistro) {
+		Optional<Registro> registro = registroRepository.findById(idRegistro);
+		if (!registro.isPresent()) {
+			// TODO Retornar excepcion de registro no encontrado
+		}
+		return registro.get();
 	}
 
 	@Override
@@ -42,3 +46,4 @@ public class RegistroServiceImp implements RegistroService{
 	}
 
 }
+ 
