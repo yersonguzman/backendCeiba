@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.parqueadero.Exceptions.NoHayRegistro;
 import com.parqueadero.models.Registro;
 import com.parqueadero.repositories.RegistroRepository;
 
@@ -24,7 +26,7 @@ public class RegistroServiceImp implements RegistroService{
 	public Registro consultarRegistro(Long idRegistro) {
 		Optional<Registro> registro = registroRepository.findById(idRegistro);
 		if (!registro.isPresent()) {
-			// TODO Retornar excepcion de registro no encontrado
+			throw new NoHayRegistro("registro no encontrado");
 		}
 		return registro.get();
 	}

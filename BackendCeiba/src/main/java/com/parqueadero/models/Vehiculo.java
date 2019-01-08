@@ -10,6 +10,16 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table (name = "Vehiculo")
 public class Vehiculo {
+	
+	public Vehiculo() {
+	}
+
+	public Vehiculo(String placa, Integer cilindraje, @NotNull String tipo) {
+		super();
+		this.placa = placa;
+		this.cilindraje = cilindraje;
+		this.tipo = tipo;
+	}
 
 	@Id
 	@Column (name = "placa", length =7)
@@ -46,5 +56,5 @@ public class Vehiculo {
 		this.tipo = tipo;
 	}
 	
-
+	
 }

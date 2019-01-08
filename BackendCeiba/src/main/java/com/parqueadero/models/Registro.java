@@ -18,6 +18,20 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table (name = "Registro")
 public class Registro {
+	
+	public Registro() {
+	}
+
+	public Registro(long idRegistro, String placa, Vehiculo vehiculoHistorico, @NotNull LocalDateTime fechaIngreso,
+			LocalDateTime fechaSalida, BigDecimal totalPago) {
+		super();
+		this.idRegistro = idRegistro;
+		this.placa = placa;
+		this.vehiculoHistorico = vehiculoHistorico;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaSalida = fechaSalida;
+		this.totalPago = totalPago;
+	}
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
