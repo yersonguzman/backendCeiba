@@ -38,7 +38,7 @@ public class VehiculoServiceImp implements VehiculoService {
 		if (restriccionPlacaA) {
 			boolean diaValido = IngresarDia();
 			if (!diaValido) {
-				throw new DiaNoPermitido("No puede ingresar este dia");
+				throw new DiaNoPermitido("No puede ingresar porque no está en un dia habil");
 			}
 		}
 		vehiculoRepository.save(vehiculo);
@@ -101,7 +101,7 @@ public class VehiculoServiceImp implements VehiculoService {
 	// verificar placa si es "A"
 	public boolean ValidarPlaca(String placa) {
 		boolean PlacaA = false;
-		if (placa.equalsIgnoreCase("A")) {
+		if (placa.toUpperCase().startsWith("A")) {
 			PlacaA = true;
 		}
 		return PlacaA;
@@ -111,7 +111,7 @@ public class VehiculoServiceImp implements VehiculoService {
 	public boolean IngresarDia() {
 		boolean diaValido = false;
 		LocalDate fechaActual = getfechaActual();
-		if (fechaActual.getDayOfWeek().equals(DayOfWeek.TUESDAY) ||fechaActual.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
+		if (fechaActual.getDayOfWeek().equals(DayOfWeek.SUNDAY) ||fechaActual.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
 			diaValido = true;
 		}
 		return diaValido;
