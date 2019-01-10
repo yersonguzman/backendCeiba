@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.parqueadero.Exceptions.NoHayRegistro;
+import com.parqueadero.constants.Constants;
 import com.parqueadero.models.Registro;
 import com.parqueadero.repositories.RegistroRepository;
 
@@ -17,6 +18,7 @@ public class RegistroServiceImp implements RegistroService{
 	@Autowired
 	private RegistroRepository registroRepository;
 	
+		
 	@Override
 	public Registro crearRegistro(Registro registro) {
 		return registroRepository.save(registro);
@@ -26,8 +28,9 @@ public class RegistroServiceImp implements RegistroService{
 	public Registro consultarRegistro(Long idRegistro) {
 		Optional<Registro> registro = registroRepository.findById(idRegistro);
 		if (!registro.isPresent()) {
-			throw new NoHayRegistro("registro no encontrado");
+			throw new NoHayRegistro(Constants.no_hay_registro);
 		}
+		
 		return registro.get();
 	}
 
@@ -46,6 +49,8 @@ public class RegistroServiceImp implements RegistroService{
 	public List<Registro> listarRegistros() {
 		return registroRepository.findAll();
 	}
+	
 
+	
 }
  

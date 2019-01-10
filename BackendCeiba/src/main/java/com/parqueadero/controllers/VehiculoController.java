@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.parqueadero.models.Vehiculo;
 import com.parqueadero.services.VehiculoService;
+import com.parqueadero.tarifas.PagoSalidaVehiculo;
 
 @RestController
 @RequestMapping("/vehiculos")
@@ -49,6 +50,12 @@ public class VehiculoController {
 	@DeleteMapping("/{placa}")
 	public void  eliminarVehiculo (@PathVariable String placa) {
 		vehiculoService.eliminarVehiculo(placa);
+	}
+	
+	@PutMapping("/salir/{placa}")
+	public  ResponseEntity <PagoSalidaVehiculo> salirDelParqueadero (@PathVariable String placa) {
+		return ResponseEntity.ok(vehiculoService.salirDelParqueadero(placa));
+		
 	}
 	
 }

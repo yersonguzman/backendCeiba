@@ -27,7 +27,7 @@ public class Registro {
 		super();
 		this.idRegistro = idRegistro;
 		this.placa = placa;
-		this.vehiculoHistorico = vehiculoHistorico;
+	//	this.vehiculoHistorico = vehiculoHistorico;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.totalPago = totalPago;
@@ -42,9 +42,9 @@ public class Registro {
 	@Column(name = "fk_placa", length = 7)
 	private String placa;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_placa", insertable = false, updatable = false)
-	private Vehiculo vehiculoHistorico;
+	//@ManyToOne(fetch = FetchType.EAGER)
+	//@JoinColumn(name = "fk_placa", insertable = false, updatable = false)
+	//private Vehiculo vehiculoHistorico;
 	
 	@NotNull
 	@Column(name = "fecha_ingreso")
@@ -73,13 +73,13 @@ public class Registro {
 		this.placa = placa;
 	}
 
-	public Vehiculo getVehiculoHistorico() {
-		return vehiculoHistorico;
-	}
+	//public Vehiculo getVehiculoHistorico() {
+	//	return vehiculoHistorico;
+	//}
 
-	public void setVehiculoHistorico(Vehiculo vehiculoHistorico) {
-		this.vehiculoHistorico = vehiculoHistorico;
-	}
+	//public void setVehiculoHistorico(Vehiculo vehiculoHistorico) {
+		//this.vehiculoHistorico = vehiculoHistorico;
+	//}
 
 	public LocalDateTime getFechaIngreso() {
 		return fechaIngreso;

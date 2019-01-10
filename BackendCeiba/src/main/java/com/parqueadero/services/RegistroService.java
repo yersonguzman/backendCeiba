@@ -1,7 +1,6 @@
 package com.parqueadero.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.parqueadero.models.Registro;
 
@@ -16,4 +15,6 @@ public interface RegistroService {
 	public void eliminarRegistro (Long idRegistro);
 	
 	public List <Registro> listarRegistros();
+	
+	
 }
