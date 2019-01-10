@@ -14,7 +14,7 @@ import com.parqueadero.models.Registro;
 public interface RegistroRepository  extends JpaRepository<Registro,Long>{
 	
 	@Query(value = "select * from registro  where fk_placa = :placa order by fecha_ingreso DESC", nativeQuery = true)
-			
 	Optional<List<Registro>> findtop1ByPlacaOrderByFechaIngresoDesc(@Param("placa")String placa);
+	
 
 }

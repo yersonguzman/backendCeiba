@@ -2,7 +2,12 @@ package com.parqueadero.modelsTest;
 
 public class VehiculoTestDataBuilder {
 
-		private String placa ;
+		private static final String placa = "LAT605";
+		private static final String tipo =  "carro";
+		private static final Integer cilindraje = "500";
+	
+	
+	private String placa ;
 		private Integer cilindraje;
 		private String tipo;
 		

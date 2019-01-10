@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.parqueadero.models.Vehiculo;
+import com.parqueadero.query.RestConsulta;
 import com.parqueadero.tarifas.PagoSalidaVehiculo;
 
 
@@ -20,5 +21,7 @@ public interface VehiculoService {
 	public List<Vehiculo> listarVehiculos ();
 	
 	public PagoSalidaVehiculo salirDelParqueadero(String placa);
+	
+	public List <RestConsulta> consultaVehiculosParqueados();
 	
 }

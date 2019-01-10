@@ -19,6 +19,7 @@ import com.parqueadero.Exceptions.ParqueoLleno;
 import com.parqueadero.constants.Constants;
 import com.parqueadero.models.Registro;
 import com.parqueadero.models.Vehiculo;
+import com.parqueadero.query.RestConsulta;
 import com.parqueadero.repositories.RegistroRepository;
 import com.parqueadero.repositories.VehiculoRepository;
 import com.parqueadero.tarifas.PagoSalidaVehiculo;
@@ -31,7 +32,7 @@ public class VehiculoServiceImp implements VehiculoService {
 
 	@Autowired
 	private RegistroRepository registroRepository;
-
+	
 	@Override
 	public Vehiculo crearVehiculo(Vehiculo vehiculo) {
 
@@ -76,6 +77,13 @@ public class VehiculoServiceImp implements VehiculoService {
 	@Override
 	public List<Vehiculo> listarVehiculos() {
 		return vehiculoRepository.findAll();
+	}
+	
+	@Override
+	public List<RestConsulta> consultaVehiculosParqueados(){
+		
+		 return  vehiculoRepository.restConsultar();
+			//	.orElseThrow(() -> new NoseEncuentraRegistro(Constants.no_hay_DatoRegistro));
 	}
 
 	public boolean CapacidadEstacionamiento(Vehiculo vehiculo) {
